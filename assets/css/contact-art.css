@@ -1,0 +1,30 @@
+.contact-inner .contact-pizza {
+  width: 190px;
+  left: -35px;
+  right: auto;
+  top: -26px;
+  bottom: auto;
+  transform: scaleX(-1) rotate(-14deg);
+  filter: drop-shadow(0 15px 16px rgb(167 91 0 / 18%));
+}
+
+.contact-inner .contact-tomato {
+  width: 180px;
+  right: -25px;
+  left: auto;
+  top: auto;
+  bottom: -40px;
+  transform: rotate(-18deg);
+}
+
+@media (max-width: 560px) {
+  .contact-inner .contact-pizza {
+    width: 135px;
+    left: -50px;
+    top: -15px;
+  }
+
+  .contact-inner .contact-tomato {
+    width: 140px;
+  }
+}
