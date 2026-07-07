@@ -1675,3 +1675,8 @@ footer small {
     opacity: 0.45;
   }
 }
+
+.minimal-hero-visual,
+.hero-tomato {
+  opacity: 0.45;
+}
