@@ -1629,3 +1629,23 @@ footer small {
 .minimal-hero .brand-reading {
   font-size: 0.45em;
 }
+
+@media (max-width: 560px) {
+  .minimal-hero {
+    min-height: 240px;
+    padding-top: 20px;
+    padding-bottom: 56px;
+  }
+
+  .minimal-hero-visual {
+    width: 84px;
+    right: 12px;
+    bottom: -5px;
+  }
+
+  .hero-tomato {
+    width: 72px;
+    left: 12px;
+    bottom: 0;
+  }
+}
