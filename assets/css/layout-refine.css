@@ -836,11 +836,32 @@ footer img {
   grid-row: auto;
 }
 
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+}
+
+.footer-nav a {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ddd;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+  color: #fff;
+}
+
 @media (max-width: 560px) {
   footer {
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .footer-nav {
+    gap: 10px 20px;
   }
 }
 
@@ -1449,5 +1470,67 @@ footer img {
     width: 64px;
     left: 14px;
     bottom: -7px;
+  }
+}
+
+.plan a {
+  justify-content: center;
+  gap: 8px;
+}
+
+.company {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.company .section-heading .inline-logo {
+  height: 1.15em;
+  width: auto;
+  margin-right: 4px;
+  vertical-align: -0.18em;
+}
+
+.company-table {
+  margin: 40px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.company-table > div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  padding: 24px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.company-table dt {
+  font-weight: 700;
+}
+
+.company-table dd {
+  margin: 0;
+}
+
+.company-table dd ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.company-table dd a {
+  color: var(--red);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.company-cta {
+  margin-top: 45px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .company-table > div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 20px 4px;
   }
 }
