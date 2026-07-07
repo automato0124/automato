@@ -1625,3 +1625,7 @@ footer small {
     font-size: 24px;
   }
 }
+
+.minimal-hero .brand-reading {
+  font-size: 0.45em;
+}
