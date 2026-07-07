@@ -1649,3 +1649,22 @@ footer small {
     bottom: 0;
   }
 }
+
+@media (max-width: 560px) {
+  .minimal-hero {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  .minimal-hero-visual {
+    width: 60px;
+    right: 10px;
+    bottom: -4px;
+  }
+
+  .hero-tomato {
+    width: 52px;
+    left: 10px;
+    bottom: 0;
+  }
+}
