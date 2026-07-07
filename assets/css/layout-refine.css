@@ -1540,3 +1540,85 @@ footer img {
   width: auto;
   vertical-align: -0.15em;
 }
+
+/* ===== 統一ルール（余白・文字サイズ） =====
+   横余白: 7vw（560px以下は22px）
+   セクション縦余白: 120px / 85px / 72px
+   h2: clamp(32px, 4vw, 55px)（560px以下は30px）
+   カード見出しh3: 19px ／ カード本文: 14px ／ 注記: 13px */
+
+.minimal-hero {
+  padding-right: 7vw;
+  padding-left: 7vw;
+}
+
+.contact-inner h2 {
+  font-size: clamp(32px, 4vw, 55px);
+}
+
+.problem-grid h3,
+.feature-grid h3,
+.flow-list h3 {
+  font-size: 19px;
+}
+
+.plan-name {
+  font-size: 19px;
+}
+
+.feature-grid p,
+.flow-list p,
+.plan > p:nth-of-type(3),
+.plan ul {
+  font-size: 14px;
+}
+
+.plan-note,
+.flow-note {
+  font-size: 13px;
+}
+
+.contact-lead {
+  font-size: 15px;
+}
+
+.company-table {
+  font-size: 15px;
+}
+
+footer small {
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .section-pad {
+    padding: 85px 7vw;
+  }
+}
+
+@media (max-width: 560px) {
+  .minimal-hero {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .section-pad {
+    padding: 72px 22px;
+  }
+
+  .contact {
+    padding: 60px 22px;
+  }
+
+  footer {
+    padding: 50px 22px;
+  }
+
+  .contact-inner h2 {
+    font-size: 30px;
+  }
+
+  .service-card h3 {
+    font-size: 24px;
+  }
+}
