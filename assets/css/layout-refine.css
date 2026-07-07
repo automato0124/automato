@@ -1078,9 +1078,9 @@ footer img {
   }
 
   .hero-tomato {
-    width: 64px;
+    width: 100px;
     left: 14px;
-    bottom: -7px;
+    bottom: 0;
   }
 }
 
@@ -1367,20 +1367,20 @@ footer img {
 }
 
 .hero-tomato {
-  width: 120px;
+  width: 190px;
   position: absolute;
   left: 3vw;
-  bottom: -20px;
+  bottom: 4px;
   z-index: 1;
-  transform: rotate(-8deg);
+  transform: scaleX(-1) rotate(-8deg);
   filter: drop-shadow(0 14px 12px rgb(120 40 0 / 13%));
 }
 
 @media (max-width: 900px) {
   .hero-tomato {
-    width: 82px;
+    width: 130px;
     left: 5vw;
-    bottom: -12px;
+    bottom: 2px;
   }
 }
 
@@ -1467,9 +1467,9 @@ footer img {
   }
 
   .hero-tomato {
-    width: 64px;
+    width: 100px;
     left: 14px;
-    bottom: -7px;
+    bottom: 0;
   }
 }
 
