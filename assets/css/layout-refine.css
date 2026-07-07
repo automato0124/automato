@@ -1668,3 +1668,10 @@ footer small {
     bottom: 0;
   }
 }
+
+@media (max-width: 560px) {
+  .minimal-hero-visual,
+  .hero-tomato {
+    opacity: 0.45;
+  }
+}
