@@ -1677,3 +1677,25 @@ footer small {
 .hero-tomato {
   opacity: 0.45;
 }
+
+.feature-icon {
+  width: 62px;
+  height: 62px;
+  margin-top: 22px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 5px 5px 0 #ffd54f;
+}
+
+.feature-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.feature-grid h3 {
+  margin-top: 20px;
+}
