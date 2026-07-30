@@ -1481,10 +1481,10 @@ footer img {
 }
 
 .company .section-heading .inline-logo {
-  height: 1.75em;
-  width: auto;
-  margin: 0 0.05em;
-  vertical-align: -0.33em;
+  width: 160px;
+  height: auto;
+  margin: 0 4px 0 0;
+  vertical-align: -10px;
 }
 
 .company-table {
@@ -1701,5 +1701,5 @@ footer small {
 }
 
 .company .section-heading h2 {
-  font-size: clamp(26px, 3vw, 38px);
+  font-size: 22px;
 }
