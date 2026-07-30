@@ -1699,3 +1699,7 @@ footer small {
 .feature-grid h3 {
   margin-top: 20px;
 }
+
+.company .section-heading h2 {
+  font-size: clamp(26px, 3vw, 38px);
+}
