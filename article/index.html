@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-article-page-title>Article | Automato</title>
+    <meta
+      name="description"
+      content="Automato（オートメイト）の記事です。"
+      data-article-description
+    >
+    <link rel="icon" href="../assets/logo-mark.png">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="topbar" aria-label="サイトヘッダー">
+      <a class="topbar-logo" href="../" aria-label="Automato ホーム">
+        <img src="../assets/logo-wordmark.png" alt="Automato">
+      </a>
+      <nav class="topbar-nav" aria-label="メニュー">
+        <a href="../#article-title">Article</a>
+        <a href="../#work-title">Work</a>
+        <a href="../#contact-title">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <article class="article article-loading" data-article-detail hidden>
+        <p class="article-date">
+          <time datetime="" data-article-date></time>
+        </p>
+        <h1 data-article-title></h1>
+        <div class="article-body" data-article-body aria-live="polite">
+          <p>読み込み中です。</p>
+        </div>
+        <p class="back-link">
+          <a href="../#article-title">トップページへ戻る</a>
+        </p>
+      </article>
+    </main>
+    <script src="../assets/js/microcms-config.js"></script>
+    <script src="../assets/js/articles.js"></script>
+  </body>
+</html>

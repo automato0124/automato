@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://automato.jp/sitemap.xml
