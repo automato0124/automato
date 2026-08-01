@@ -46,7 +46,7 @@ body {
 .topbar-logo {
   display: inline-flex;
   align-items: center;
-  width: 132px;
+  width: 148px;
 }
 
 .topbar-logo img {
@@ -339,7 +339,7 @@ a:hover {
   }
 
   .topbar-logo {
-    width: 118px;
+    width: 132px;
   }
 
   .topbar-nav {
