@@ -1,7 +1,5 @@
 window.MICROCMS_CONFIG = {
-  serviceDomain: "automato",
-  apiKey: "",
-  endpoint: "articles",
+  apiBase: "/api",
   dateField: "date",
   timeZone: "Asia/Tokyo"
 };

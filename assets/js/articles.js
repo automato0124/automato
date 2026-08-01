@@ -14,9 +14,7 @@
     }
   ];
 
-  const hasMicroCMSConfig = Boolean(
-    config.serviceDomain && config.apiKey && config.endpoint
-  );
+  const hasMicroCMSConfig = Boolean(config.apiBase);
 
   function formatDate(value) {
     const parts = getDateParts(value);
@@ -71,17 +69,11 @@
     return `./article/?id=${encodeURIComponent(id)}`;
   }
 
-  async function fetchMicroCMS(path, query) {
-    const params = new URLSearchParams(query);
-    const url = `https://${config.serviceDomain}.microcms.io/api/v1/${path}?${params}`;
-    const response = await fetch(url, {
-      headers: {
-        "X-MICROCMS-API-KEY": config.apiKey
-      }
-    });
+  async function fetchJson(url) {
+    const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`microCMS request failed: ${response.status}`);
+      throw new Error(`request failed: ${response.status}`);
     }
 
     return response.json();
@@ -90,11 +82,8 @@
   async function getArticles() {
     if (!hasMicroCMSConfig) return fallbackArticles;
 
-    const data = await fetchMicroCMS(config.endpoint, {
-      limit: "5",
-      orders: `-${config.dateField || "date"},-publishedAt`,
-      fields: `id,title,${config.dateField || "date"},publishedAt,revisedAt,createdAt`
-    });
+    const params = new URLSearchParams({ limit: "5" });
+    const data = await fetchJson(`${config.apiBase}/articles?${params}`);
 
     return Array.isArray(data.contents) ? data.contents : fallbackArticles;
   }
@@ -104,7 +93,8 @@
       return fallbackArticles.find((article) => article.id === id) || fallbackArticles[0];
     }
 
-    return fetchMicroCMS(`${config.endpoint}/${encodeURIComponent(id)}`, {});
+    const params = new URLSearchParams({ id });
+    return fetchJson(`${config.apiBase}/article?${params}`);
   }
 
   function renderArticleList(articles) {
