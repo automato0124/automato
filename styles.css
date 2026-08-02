@@ -256,8 +256,48 @@ li::before {
   color: inherit;
 }
 
+.contact-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.contact-links a:hover {
+  color: var(--accent);
+}
+
+.contact-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.contact-links svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+}
+
 .article {
   padding: 0 0 30px;
+}
+
+@media (min-width: 760px) {
+  .topbar,
+  .page {
+    width: min(100% - 64px, 720px);
+  }
 }
 
 .article[hidden] {
@@ -349,12 +389,5 @@ a:hover {
 
   body {
     font-size: 15px;
-  }
-}
-
-@media (min-width: 760px) {
-  .topbar,
-  .page {
-    width: min(100% - 40px, 460px);
   }
 }
