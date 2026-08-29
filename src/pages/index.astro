@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate, formatDateTimeAttribute, getArticleDate, getArticles } from "../lib/microcms.js";
+
+const articles = await getArticles(5);
+---
+
+<BaseLayout>
+  <section class="intro" aria-labelledby="headline">
+    <h1 id="headline">Welcome.</h1>
+    <p>
+      Automato（オートメイト）は、<br />
+      <b>「Protect your time, Create your life.」</b>をモットーに、<br />
+      あなたの時間を守り、あなたの人生をたのしくする活動を行っています。
+    </p>
+  </section>
+
+  <section class="text-section" aria-labelledby="article-title">
+    <h2 id="article-title">Article</h2>
+    <ul class="article-list">
+      {
+        articles.map((article) => {
+          const dateValue = getArticleDate(article);
+          return (
+            <li>
+              <a href={`/article/${article.id}/`}>
+                <time datetime={formatDateTimeAttribute(dateValue)}>{formatDate(dateValue)}</time>
+                <span>{article.title || "Untitled"}</span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+
+  <section class="text-section" aria-labelledby="work-title">
+    <h2 id="work-title">Work</h2>
+    <ul>
+      <li>業務自動化システム開発</li>
+      <li>Webゲーム開発</li>
+      <li><a href="https://games.automato.jp">Automato Games</a>の運営</li>
+    </ul>
+  </section>
+
+  <section class="text-section" aria-labelledby="approach-title">
+    <h2 id="approach-title">About</h2>
+    <table class="about-table">
+      <tbody>
+        <tr>
+          <th scope="row">屋号・サービス名</th>
+          <td>Automato（オートメイト）</td>
+        </tr>
+        <tr>
+          <th scope="row">代表者</th>
+          <td>寺崎充来</td>
+        </tr>
+        <tr>
+          <th scope="row">所在地</th>
+          <td>愛知県名古屋市千種区今池5-33-2</td>
+        </tr>
+        <tr>
+          <th scope="row">設立</th>
+          <td>2026年1月24日</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="text-section" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
+    <a href="mailto:contact@automato.jp">contact@automato.jp</a>
+    <div class="contact-links" aria-label="SNS・チャットリンク">
+      <a
+        href="https://x.com/automato0124"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="XでAutomatoを見る"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M13.86 10.47 21.15 2h-1.73l-6.33 7.35L8.03 2H2.2l7.64 11.12L2.2 22h1.73l6.68-7.76L15.95 22h5.83l-7.92-11.53Zm-2.36 2.75-.78-1.11L4.57 3.3H7.2l4.98 7.13.77 1.11 6.47 9.27h-2.63l-5.29-7.59Z"
+          />
+        </svg>
+      </a>
+      <a
+        href="https://www.chatwork.com/automato"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="ChatworkでAutomatoに連絡する"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M4.1 4.1h15.8v11.2H8.72L4.1 19.9V4.1Zm2 2v8.97l1.79-1.77H17.9V6.1H6.1Zm3.04 3.04h5.72v1.55H9.14V9.14Zm0 2.83h8.02v1.55H9.14v-1.55Z"
+          />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

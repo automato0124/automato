@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatDate,
+  formatDateTimeAttribute,
+  getArticle,
+  getArticleDate,
+  getArticles
+} from "../../lib/microcms.js";
+
+export async function getStaticPaths() {
+  const articles = await getArticles(100);
+
+  return articles.map((article) => ({
+    params: { id: article.id },
+    props: { article }
+  }));
+}
+
+let { article } = Astro.props;
+article = article?.body ? article : await getArticle(article?.id);
+
+const title = article?.title || "Article";
+const dateValue = getArticleDate(article);
+---
+
+<BaseLayout title={`${title} | Automato`} description={`${title} | Automato`}>
+  <article class="article">
+    <p class="article-date">
+      <time datetime={formatDateTimeAttribute(dateValue)}>{formatDate(dateValue)}</time>
+    </p>
+    <h1>{title}</h1>
+    <div class="article-body" set:html={article?.body || "<p>本文がありません。</p>"} />
+    <p class="back-link">
+      <a href="/#article-title">トップページへ戻る</a>
+    </p>
+  </article>
+</BaseLayout>

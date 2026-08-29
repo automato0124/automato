@@ -1,19 +1,5 @@
 (function () {
   const config = window.MICROCMS_CONFIG || {};
-  const fallbackArticles = [
-    {
-      id: "2026-01-24",
-      title: "Automatoを設立しました。",
-      date: "2026-01-24T00:00:00.000+09:00",
-      publishedAt: "2026-01-24T00:00:00.000Z",
-      body: [
-        "<p>2026年1月24日、業務自動化支援サービス Automato（オートメイト）を設立しました。</p>",
-        "<p>Excel・スプレッドシート作業、業務管理ツール、RPAの導入を通じて、日々くり返している作業を実用的な仕組みに変えていきます。</p>",
-        "<p>小さく始められて、現場で続けられる自動化を目指します。</p>"
-      ].join("")
-    }
-  ];
-
   const hasMicroCMSConfig = Boolean(config.apiBase);
 
   function formatDate(value) {
@@ -66,7 +52,7 @@
   }
 
   function createArticleUrl(id) {
-    return `./article/?id=${encodeURIComponent(id)}`;
+    return `/article/?id=${encodeURIComponent(id)}`;
   }
 
   async function fetchJson(url) {
@@ -80,18 +66,16 @@
   }
 
   async function getArticles() {
-    if (!hasMicroCMSConfig) return fallbackArticles;
+    if (!hasMicroCMSConfig) return [];
 
     const params = new URLSearchParams({ limit: "5" });
     const data = await fetchJson(`${config.apiBase}/articles?${params}`);
 
-    return Array.isArray(data.contents) ? data.contents : fallbackArticles;
+    return Array.isArray(data.contents) ? data.contents : [];
   }
 
   async function getArticle(id) {
-    if (!hasMicroCMSConfig) {
-      return fallbackArticles.find((article) => article.id === id) || fallbackArticles[0];
-    }
+    if (!hasMicroCMSConfig) return null;
 
     const params = new URLSearchParams({ id });
     return fetchJson(`${config.apiBase}/article?${params}`);
@@ -119,6 +103,13 @@
   function renderArticleDetail(article) {
     const detail = document.querySelector("[data-article-detail]");
     if (!detail) return;
+    if (!article) {
+      document.querySelector("[data-article-title]").textContent = "記事が見つかりませんでした";
+      document.querySelector("[data-article-body]").innerHTML = "<p>記事を取得できませんでした。</p>";
+      detail.hidden = false;
+      detail.classList.remove("article-loading");
+      return;
+    }
 
     const title = article.title || "Article";
     const dateValue = getArticleDate(article);
@@ -145,19 +136,19 @@
       renderArticleList(await getArticles());
     } catch (error) {
       console.warn(error);
-      renderArticleList(fallbackArticles);
+      renderArticleList([]);
     }
   }
 
   async function initArticleDetail() {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id") || fallbackArticles[0].id;
+    const id = params.get("id");
 
     try {
-      renderArticleDetail(await getArticle(id));
+      renderArticleDetail(id ? await getArticle(id) : null);
     } catch (error) {
       console.warn(error);
-      renderArticleDetail(fallbackArticles[0]);
+      renderArticleDetail(null);
     }
   }
 
