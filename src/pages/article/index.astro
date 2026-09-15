@@ -1,15 +1,27 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatDate, formatDateTimeAttribute, getArticleDate, getArticles } from "../../lib/microcms.js";
+
+const articles = await getArticles(100);
 ---
 
-<BaseLayout title="Article | Automato" description="Automato（オートメイト）の記事です。">
-  <article class="article">
-    <h1>記事が見つかりませんでした</h1>
-    <div class="article-body">
-      <p>トップページの記事一覧から選択してください。</p>
+<BaseLayout title="Articles | Automato" description="Automato（オートメイト）の業務自動化に関する記事一覧です。">
+  <section class="article-page" aria-labelledby="archive-title">
+    <div class="article-page-inner">
+      <div class="section-kicker">AUTOMATO <span>ARTICLES</span></div>
+      <h1 id="archive-title">日々の仕事を、少しずつ。</h1>
+      <p class="archive-intro">Automatoからの記事をお届けします。</p>
+      {articles.length > 0 ? (
+        <ul class="archive-list">
+          {articles.map((article) => {
+            const dateValue = getArticleDate(article);
+            return <li><a href={`/article/${article.id}/`}><time datetime={formatDateTimeAttribute(dateValue)}>{formatDate(dateValue)}</time><span>{article.title || "タイトル未設定"}</span><span aria-hidden="true">↗</span></a></li>;
+          })}
+        </ul>
+      ) : (
+        <p class="archive-empty">新しい記事を準備しています。</p>
+      )}
+      <p class="back-link"><a class="text-link" href="/#articles">トップページへ戻る <span aria-hidden="true">↗</span></a></p>
     </div>
-    <p class="back-link">
-      <a href="/#article-title">トップページへ戻る</a>
-    </p>
-  </article>
+  </section>
 </BaseLayout>

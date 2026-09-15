@@ -25,14 +25,13 @@ const dateValue = getArticleDate(article);
 ---
 
 <BaseLayout title={`${title} | Automato`} description={`${title} | Automato`}>
-  <article class="article">
-    <p class="article-date">
-      <time datetime={formatDateTimeAttribute(dateValue)}>{formatDate(dateValue)}</time>
-    </p>
-    <h1>{title}</h1>
-    <div class="article-body" set:html={article?.body || "<p>本文がありません。</p>"} />
-    <p class="back-link">
-      <a href="/#article-title">トップページへ戻る</a>
-    </p>
-  </article>
+  <div class="article-page">
+    <article class="article-page-inner">
+      <div class="section-kicker">AUTOMATO <span>ARTICLE</span></div>
+      <p class="article-date"><time datetime={formatDateTimeAttribute(dateValue)}>{formatDate(dateValue)}</time></p>
+      <h1>{title}</h1>
+      <div class="article-body" set:html={article?.body || "<p>本文がありません。</p>"} />
+      <p class="back-link"><a class="text-link" href="/article/">記事一覧へ戻る <span aria-hidden="true">↗</span></a></p>
+    </article>
+  </div>
 </BaseLayout>

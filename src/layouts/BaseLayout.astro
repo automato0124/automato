@@ -2,8 +2,8 @@
 import "../styles/global.css";
 
 const {
-  title = "Automato",
-  description = "Automato（オートメイト）は、Excel・スプレッドシートの自動化、業務管理ツールの構築、RPA導入を支援する業務自動化サービスです。"
+  title = "Automato | 月額制の業務自動化サービス",
+  description = "Automato（オートメイト）は、Excel・Googleスプレッドシートの自動化、業務システム構築、RPA導入と継続改善を支援する法人向け月額制サービスです。"
 } = Astro.props;
 ---
 
@@ -12,24 +12,61 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1ea" />
     <title data-article-page-title>{title}</title>
     <meta name="description" content={description} data-article-description />
     <link rel="icon" href="/assets/logo-mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="topbar" aria-label="サイトヘッダー">
-      <a class="topbar-logo" href="/" aria-label="Automato ホーム">
-        <img src="/assets/logo-wordmark.png" alt="Automato" />
-      </a>
-      <nav class="topbar-nav" aria-label="メニュー">
-        <a href="/#article-title">Article</a>
-        <a href="/#work-title">Work</a>
-        <a href="/#contact-title">Contact</a>
-      </nav>
+    <header class="site-header" aria-label="サイトヘッダー">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Automato ホーム"><img src="/assets/logo-wordmark.png" alt="Automato" width="178" height="26" /></a>
+        <nav class="desktop-nav" aria-label="メインメニュー">
+          <a href="/#about">ABOUT</a>
+          <a href="/#services">SERVICES</a>
+          <a href="/#plans">PLANS</a>
+          <a href="/#articles">NEWS</a>
+          <a href="/#support">SUPPORT</a>
+          <a href="/#contact">CONTACT</a>
+        </nav>
+        <details class="mobile-nav">
+          <summary aria-label="メニューを開く"><span></span><span></span><span></span></summary>
+          <nav aria-label="モバイルメニュー">
+            <a href="/#about">ABOUT</a>
+            <a href="/#services">SERVICES</a>
+            <a href="/#plans">PLANS</a>
+            <a href="/#articles">NEWS</a>
+            <a href="/#support">SUPPORT</a>
+            <a href="/#contact">CONTACT</a>
+          </nav>
+        </details>
+      </div>
     </header>
 
-    <main class="page">
-      <slot />
-    </main>
+    <main id="main-content"><slot /></main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <nav aria-label="フッターメニュー">
+            <a href="/#about">ABOUT</a>
+            <a href="/#services">SERVICES</a>
+            <a href="/#plans">PLANS</a>
+            <a href="/#articles">NEWS</a>
+            <a href="/#support">SUPPORT</a>
+            <a href="https://www.chatwork.com/automato">CONTACT</a>
+          </nav>
+        </div>
+        <div class="footer-bottom"><span>© {new Date().getFullYear()} Automato</span></div>
+      </div>
+    </footer>
+    <script>
+      document.querySelectorAll(".mobile-nav nav a").forEach((link) => {
+        link.addEventListener("click", () => link.closest("details")?.removeAttribute("open"));
+      });
+    </script>
   </body>
 </html>
