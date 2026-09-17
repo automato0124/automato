@@ -18,26 +18,37 @@ const plans = [
 ---
 
 <BaseLayout>
-  <section class="about section-block" id="about" aria-labelledby="about-title">
+  <section class="hero section-block" id="hero" aria-labelledby="hero-title">
     <div class="section-frame">
-      <div class="about-grid">
-        <div class="about-art" aria-hidden="true">
-          <div class="about-art-window"><img src="/assets/about-workflow.png" alt="" /></div>
+      <div class="hero-grid">
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-art-window"><img src="/assets/about-workflow.png" alt="" /></div>
         </div>
-        <div class="about-copy">
+        <div class="hero-copy">
           <p class="eyebrow">WHAT WE DO</p>
-          <h2 id="about-title" class="hand-title">今ある仕事を<br />もっと<span class="title-accent">スムーズ</span>に。</h2>
+          <h1 id="hero-title" class="hand-title">今ある仕事を<br />もっと<span class="title-accent">スムーズ</span>に。</h1>
           <p>Automatoは、法人向けの月額制業務自動化サービスです。今使っているExcelやGoogleスプレッドシート、業務フローを確認し、無理なく使い続けられる仕組みを設計します。</p>
           <p>制作して終わりではありません。契約期間中の保守と、毎月の制作・改善枠を使った継続的な見直しまで対応します。</p>
           <a class="text-link" href="#support">ご利用の流れを見る <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <dl class="business-info" aria-label="事業者情報">
-        <div><dt>屋号・サービス名</dt><dd>Automato（オートメイト）</dd></div>
-        <div><dt>代表者</dt><dd>寺崎 充来</dd></div>
-        <div><dt>所在地</dt><dd>愛知県名古屋市千種区今池5-33-2</dd></div>
-        <div><dt>設立</dt><dd>2026年1月24日</dd></div>
-      </dl>
+    </div>
+  </section>
+
+  <section class="about section-block" id="about" aria-labelledby="about-title">
+    <div class="section-frame">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">WHO WE ARE</p><h2 id="about-title" class="hand-heading">ABOUT</h2></div>
+      </div>
+      <table class="business-info" aria-label="事業者情報">
+        <tbody>
+          <tr><th scope="row">屋号・サービス名</th><td>Automato（オートメイト）</td></tr>
+          <tr><th scope="row">代表者</th><td>寺崎 充来</td></tr>
+          <tr><th scope="row">所在地</th><td>愛知県名古屋市千種区今池5-33-2</td></tr>
+          <tr><th scope="row">設立</th><td>2026年1月24日</td></tr>
+          <tr><th scope="row">事業内容</th><td>法人向け業務自動化サービスの提供（Excel・Googleスプレッドシートの自動化、業務システムの構築、RPA導入・運用支援）</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
