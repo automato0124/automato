@@ -25,6 +25,15 @@ const {
       <img src="/assets/logo-mark.webp" alt="" width="44" height="44" />
       <div class="page-loader-track"><div class="page-loader-bar"></div></div>
     </div>
+    <script is:inline>
+      try {
+        if (sessionStorage.getItem("automato-visited")) {
+          document.querySelector(".page-loader").remove();
+        } else {
+          sessionStorage.setItem("automato-visited", "1");
+        }
+      } catch (e) {}
+    </script>
     <header class="site-header" aria-label="サイトヘッダー">
       <div class="header-inner">
         <a class="brand" href="/" aria-label="Automato ホーム"><img src="/assets/logo-wordmark.webp" alt="Automato" width="178" height="26" /></a>
