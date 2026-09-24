@@ -15,15 +15,16 @@ const {
     <meta name="theme-color" content="#f4f1ea" />
     <title data-article-page-title>{title}</title>
     <meta name="description" content={description} data-article-description />
-    <link rel="icon" href="/assets/logo-mark.png" />
+    <link rel="icon" href="/assets/logo-mark.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <div class="page-loader" aria-hidden="true"><div class="page-loader-bar"></div></div>
     <header class="site-header" aria-label="サイトヘッダー">
       <div class="header-inner">
-        <a class="brand" href="/" aria-label="Automato ホーム"><img src="/assets/logo-wordmark.png" alt="Automato" width="178" height="26" /></a>
+        <a class="brand" href="/" aria-label="Automato ホーム"><img src="/assets/logo-wordmark.webp" alt="Automato" width="178" height="26" /></a>
         <nav class="desktop-nav" aria-label="メインメニュー">
           <a href="/#about">ABOUT</a>
           <a href="/#services">SERVICES</a>
@@ -67,6 +68,24 @@ const {
       document.querySelectorAll(".mobile-nav nav a").forEach((link) => {
         link.addEventListener("click", () => link.closest("details")?.removeAttribute("open"));
       });
+
+      const loader = document.querySelector(".page-loader");
+      const bar = loader?.querySelector(".page-loader-bar");
+      if (loader instanceof HTMLElement && bar instanceof HTMLElement) {
+        const finish = () => {
+          bar.style.transition = "width .25s ease";
+          bar.style.width = "100%";
+          loader.classList.add("is-done");
+          setTimeout(() => loader.remove(), 800);
+        };
+        if (document.readyState === "complete") {
+          finish();
+        } else {
+          bar.style.transition = "width 3s cubic-bezier(.2, .6, .3, 1)";
+          requestAnimationFrame(() => { bar.style.width = "82%"; });
+          window.addEventListener("load", finish, { once: true });
+        }
+      }
     </script>
   </body>
 </html>

@@ -22,7 +22,7 @@ const plans = [
     <div class="section-frame">
       <div class="hero-grid">
         <div class="hero-art" aria-hidden="true">
-          <div class="hero-art-window"><img src="/assets/about-workflow.png" alt="" /></div>
+          <div class="hero-art-window"><img src="/assets/about-workflow.webp" alt="" /></div>
         </div>
         <div class="hero-copy">
           <p class="eyebrow">WHAT WE DO</p>
@@ -63,7 +63,7 @@ const plans = [
           <article class="service-card">
             <div class={`service-art service-art-${service.illustration}`} aria-hidden="true">
               <span class="service-art-number">{service.number}</span>
-              <img src={`/assets/service-${service.illustration}.png`} alt="" />
+              <img src={`/assets/service-${service.illustration}.webp`} alt="" />
             </div>
             <div class="service-card-body">
               <p class="service-label">{service.label}</p>
@@ -88,7 +88,7 @@ const plans = [
         {plans.map((plan) => (
           <article class:list={["plan-card", { "plan-card-featured": plan.recommended }]}>
             {plan.recommended && <span class="recommend-tag">おすすめ</span>}
-            <div class="plan-header"><img src="/assets/logo-mark.png" alt="" width="32" height="32" /><h3>{plan.name}</h3></div>
+            <div class="plan-header"><h3>{plan.name}</h3></div>
             <p class="plan-summary">{plan.summary}</p>
             <div class="plan-price"><span>月額</span><strong>¥{plan.price}</strong><span>税込</span></div>
             <dl>
@@ -129,7 +129,7 @@ const plans = [
 
   <section class="support section-block paper-section" id="support" aria-labelledby="support-title">
     <div class="section-frame">
-      <div class="support-banner"><img src="/assets/support-workflow.png" alt="" /></div>
+      <div class="support-banner"><img src="/assets/support-workflow.webp" alt="" /></div>
       <div class="section-heading split-heading support-heading">
         <div><p class="eyebrow">WORKING TOGETHER</p><h2 id="support-title" class="hand-heading">SUPPORT</h2></div>
         <p>相談から制作、運用まで。Automatoがつくった仕組みを、日々の仕事の中で使い続けられるよう支援します。</p>
