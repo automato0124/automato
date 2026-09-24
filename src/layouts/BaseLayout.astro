@@ -72,19 +72,21 @@ const {
       const loader = document.querySelector(".page-loader");
       const bar = loader?.querySelector(".page-loader-bar");
       if (loader instanceof HTMLElement && bar instanceof HTMLElement) {
+        const started = performance.now();
+        const MIN_VISIBLE = 700;
+        bar.style.transition = "width 2.5s cubic-bezier(.2, .6, .3, 1)";
+        requestAnimationFrame(() => { bar.style.width = "82%"; });
         const finish = () => {
-          bar.style.transition = "width .25s ease";
-          bar.style.width = "100%";
-          loader.classList.add("is-done");
-          setTimeout(() => loader.remove(), 800);
+          const wait = Math.max(0, MIN_VISIBLE - (performance.now() - started));
+          setTimeout(() => {
+            bar.style.transition = "width .3s ease";
+            bar.style.width = "100%";
+            loader.classList.add("is-done");
+            setTimeout(() => loader.remove(), 900);
+          }, wait);
         };
-        if (document.readyState === "complete") {
-          finish();
-        } else {
-          bar.style.transition = "width 3s cubic-bezier(.2, .6, .3, 1)";
-          requestAnimationFrame(() => { bar.style.width = "82%"; });
-          window.addEventListener("load", finish, { once: true });
-        }
+        if (document.readyState === "complete") finish();
+        else window.addEventListener("load", finish, { once: true });
       }
     </script>
   </body>
