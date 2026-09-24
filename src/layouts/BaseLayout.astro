@@ -21,6 +21,10 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <div class="page-loader" aria-hidden="true">
+      <img src="/assets/logo-mark.webp" alt="" width="44" height="44" />
+      <div class="page-loader-track"><div class="page-loader-bar"></div></div>
+    </div>
     <header class="site-header" aria-label="サイトヘッダー">
       <div class="header-inner">
         <a class="brand" href="/" aria-label="Automato ホーム"><img src="/assets/logo-wordmark.webp" alt="Automato" width="178" height="26" /></a>
@@ -67,6 +71,27 @@ const {
       document.querySelectorAll(".mobile-nav nav a").forEach((link) => {
         link.addEventListener("click", () => link.closest("details")?.removeAttribute("open"));
       });
+
+      const loader = document.querySelector(".page-loader");
+      const bar = loader?.querySelector(".page-loader-bar");
+      if (loader instanceof HTMLElement && bar instanceof HTMLElement) {
+        const started = performance.now();
+        const MIN_VISIBLE = 900;
+        bar.style.transition = "width 2.5s cubic-bezier(.2, .6, .3, 1)";
+        requestAnimationFrame(() => { bar.style.width = "82%"; });
+        const finish = () => {
+          const wait = Math.max(0, MIN_VISIBLE - (performance.now() - started));
+          setTimeout(() => {
+            bar.style.transition = "width .3s ease";
+            bar.style.width = "100%";
+            loader.classList.add("is-done");
+            setTimeout(() => loader.remove(), 700);
+          }, wait);
+        };
+        if (document.readyState === "complete") finish();
+        else window.addEventListener("load", finish, { once: true });
+        setTimeout(finish, 5000);
+      }
     </script>
   </body>
 </html>
